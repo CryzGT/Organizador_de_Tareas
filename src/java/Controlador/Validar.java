@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Validar extends HttpServlet {
 
-    UsuarioDAO udao= new UsuarioDAO();
+    UsuarioDAO udao = new UsuarioDAO();
     Usuario us = new Usuario();
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Validar</title>");            
+            out.println("<title>Servlet Validar</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Validar at " + request.getContextPath() + "</h1>");
@@ -32,41 +32,34 @@ public class Validar extends HttpServlet {
         }
     }
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException { 
-        String accion=request.getParameter("accion");
-        
+            throws ServletException, IOException {
+        String accion = request.getParameter("accion");
+
         System.out.println("Esto sale en pantalla\n");
         if (accion.equalsIgnoreCase("Ingresar")) {
             String user = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
-            us=udao.Validar(user, pass);
-            
-            
-            
-            if(us.getUser()!=null){
-                request.getRequestDispatcher("Principal.jsp").forward(request, response);
-            //request.getRequestDispatcher("Controlador?accion=Principal").forward(request, response);
-            }else{
-                 request.getRequestDispatcher("index.jsp").forward(request, response);
-            }
-        } 
-        else {
-           request.getRequestDispatcher("index.jsp").forward(request, response);
-        } 
-        
-    }
-    
+            us = udao.Validar(user, pass);
 
+            if (us.getLogin() != null) {
+                request.setAttribute("USUARIO", us);
+                request.getRequestDispatcher("Controlador?menu=Principal&usuario=").forward(request, response);
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        } else {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
+
+    }
 
     @Override
     public String getServletInfo() {
