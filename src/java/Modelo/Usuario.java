@@ -8,22 +8,26 @@ package Modelo;
 public class Usuario {
     
     int idUsuario;
-    String Nombres;
-    String Telefono;
-    String Estado;
-    String User;
+    int idRol;
+    String Login;
+    String Nombre;
+    String Correo;
     String Pass;
-    
- public Usuario(){
- }   
+    boolean Activo;
+    boolean interno;
 
-    public Usuario(int idUsuario, String Nombres, String Telefono, String Estado, String User, String Pass) {
+    public Usuario() {
+    }
+
+    public Usuario(int idUsuario, int idRol, String Login, String Nombre, String Correo, String Pass, boolean Activo, boolean interno) {
         this.idUsuario = idUsuario;
-        this.Nombres = Nombres;
-        this.Telefono = Telefono;
-        this.Estado = Estado;
-        this.User = User;
+        this.idRol = idRol;
+        this.Login = Login;
+        this.Nombre = Nombre;
+        this.Correo = Correo;
         this.Pass = Pass;
+        this.Activo = Activo;
+        this.interno = interno;
     }
 
     public int getIdUsuario() {
@@ -34,36 +38,36 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getNombres() {
-        return Nombres;
+    public int getIdRol() {
+        return idRol;
     }
 
-    public void setNombres(String Nombres) {
-        this.Nombres = Nombres;
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
     }
 
-    public String getTelefono() {
-        return Telefono;
+    public String getLogin() {
+        return Login;
     }
 
-    public void setTelefono(String Telefono) {
-        this.Telefono = Telefono;
+    public void setLogin(String Login) {
+        this.Login = Login;
     }
 
-    public String getEstado() {
-        return Estado;
+    public String getNombre() {
+        return Nombre;
     }
 
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
-    public String getUser() {
-        return User;
+    public String getCorreo() {
+        return Correo;
     }
 
-    public void setUser(String User) {
-        this.User = User;
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
     }
 
     public String getPass() {
@@ -73,6 +77,24 @@ public class Usuario {
     public void setPass(String Pass) {
         this.Pass = Pass;
     }
+
+    public boolean isActivo() {
+        return Activo;
+    }
+
+    public void setActivo(boolean Activo) {
+        this.Activo = Activo;
+    }
+
+    public boolean isInterno() {
+        return interno;
+    }
+
+    public void setInterno(boolean interno) {
+        this.interno = interno;
+    }
+    
+ 
 
 
  

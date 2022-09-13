@@ -17,7 +17,7 @@ public class UsuarioDAO {
     
     public Usuario Validar (String User, String Pass ) {
         Usuario  us=new Usuario();
-        String sql = "select * from usuario where User=? and Pass=?";
+        String sql = "select * from usuario where login=? and contrasena=?";
         
         try{
             con = cn.Conexion();
@@ -26,10 +26,9 @@ public class UsuarioDAO {
             ps.setString(2, Pass);
             rs = ps.executeQuery();
             while (rs.next()) {
-                us.setIdUsuario(rs.getInt("IdUsuario"));
-                us.setUser(rs.getString("User"));
-                us.setPass(rs.getString("Pass"));
-                us.setNombres(rs.getString("Nombres"));
+                us.setLogin(rs.getString("login"));
+                us.setPass(rs.getString("contrasena"));
+                us.setNombre(rs.getString("nombre"));
             }
             
         }catch (Exception e){

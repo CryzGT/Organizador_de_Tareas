@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 public class Conexion {
     
     Connection con;
-    String url="jdbc:mysql://localhost:3306/bd_organizador_de_tareas";
+    String url="jdbc:mysql://localhost:3306/organizador_tareas";
     String user="root";
     String pass="";
     

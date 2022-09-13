@@ -10,7 +10,7 @@
         <div class="container mt-4 col-lg-4">
             <div class="card col-sm-10">
                 <div class="card-body">
-                    <form class="form-sign" action="Validar" method="post">
+                    <form class="form-sign" action="Validar" method="POST">
                         <div class="form-group text-center"> 
                             <h3>Login</h3>
                             <img src="img/DIGICAL-CALENDARIO-logo.png" alt=""/>
@@ -29,8 +29,7 @@
                         
                         </div>
                         <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block">
-                        
-
+                      
                     </form>
                     
                 </div>
