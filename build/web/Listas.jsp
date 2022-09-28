@@ -1,10 +1,8 @@
 <%-- 
-    Document   : miTablero
-    Created on : Sep 12, 2022, 3:13:27 PM
+    Document   : Listado
+    Created on : Sep 15, 2022, 3:26:06 PM
     Author     : Anderson
 --%>
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -16,45 +14,53 @@
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <link href="css/Estilo.css" rel="stylesheet" type="text/css"/>
-        <title>Mis Tableros</title>
+        <title>Usuarios</title>
     </head>
     <body>
+        <div class="contenedor">
+            <div class="card col-sm-8" id="hijo">
+                <div  style="display: inline-block">
+                    <ion-icon name="clipboard-outline" style="font-size: 64px;"></ion-icon>
+                    <h1 style="text-align: center">Listado de Tareas del Tablero: ${NAMEBOARD.getNombre()}</h1>
+                </div>
+            </div>
+        </div>
         <div class="d-flex">
-            <div class="col-sm-8" id="hijo">
+            <div class="col-sm-8" id="botonLista">
+                <div>
+                    <a id="botonLista" class="btn btn-outline-success" href="Controlador?menu=Lists&accion=addList">Crear Nueva Lista
+                        <ion-icon name="add-outline" style="font-size: 30px;"></ion-icon></a>
+                        
+                        
+                </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="col-sm-8" id="tableLista">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th></th>
                             <th>Nombre</th>
                             <th>Descripción</th>
-                            <th>Fecha</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
+                            <th></th>
                         </tr>
                     </thead>
-                    <c:forEach  var="um" items="${TABLERO}">
+                    <c:forEach  var="ls" items="${SHOWLISTS}">
                         <tr>
-                            <td>${um.getIdTablero()}</td>
-                            <td>${um.getNombre()}</td>
-                            <td>${um.getDescripcion()}</td>
-                            <td>${um.getFechaCreacion()}</td>
-                            <td>${um.isPublico()}</td>          
+                            <td><ion-icon name="clipboard-outline" style="font-size: 35px;"></ion-icon></td>
+                            <td>${ls.getNombreLista()}</td>
+                            <td>${ls.getDescLista()}</td>        
                             <td>                          
-                                <a href="Controlador?menu=Lists&accion=showLists&nameBoard=${um.getNombre()}&idBoard=${um.getIdTablero()}">
-                                    <ion-icon name="clipboard-outline" style="font-size: 30px;"></ion-icon></a>
                                 <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
-                                    <ion-icon name="pencil-outline" style="font-size: 30px;"></ion-icon></a>
-                                <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
-                                    <ion-icon name="share-social-outline" style="font-size: 30px;"></ion-icon></a>
-                                <a href="Controlador?menu=Board&accion=Delete&idBoard=${um.getIdTablero()}">
-                                    <ion-icon name="trash-outline" style="font-size: 30px;"></ion-icon></a>           
-                            </td>
+                                    <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
+                                    <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
+                                    <ion-icon name="trash" style="font-size: 40px;"></ion-icon></a>
                         </tr>
                     </c:forEach>
                 </table>
             </div>
         </div>
-
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

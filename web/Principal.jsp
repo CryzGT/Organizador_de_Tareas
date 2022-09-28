@@ -24,15 +24,14 @@
                     <ion-icon name="home" style="font-size: 64px;"></ion-icon>
 
                     <li class="nav-item">
-                        <a style="margin-left: 100px;" class="btn btn-outline-dark" href="Controlador?menu=Tablero&accion=listarTableros" target="myframe">Mi Tablero</a>
+                        <a style="margin-left: 100px;" class="btn btn-outline-dark" href="Controlador?menu=Board&accion=listBoard&idUser=${USUARIO.getIdUsuario()}" target="myframe">Mi Tablero</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="margin-left: 10px;" class="btn btn-outline-dark" href="Controlador?menu=Board&accion=addBoard" target="myframe">Crear Nuevo Tablero</a>
                     </li>
 
                     <li class="nav-item">
-                        <a style="margin-left: 10px;" class="btn btn-outline-dark" href="Controlador?menu=&accion=" target="myframe">Crear Nuevo Tablero</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a style="margin-left: 10px;" class="btn btn-outline-dark" href="Controlador?menu=&accion=" target="myframe">Invitaciones</a>
+                        <a style="margin-left: 10px;" class="btn btn-outline-dark" href="Controlador?menu=Board&accion=" target="myframe">Invitaciones</a>
                     </li>
                 </ul>
             </div>
@@ -44,6 +43,8 @@
                     </button>
                     <div class="dropdown-menu text-center" >
                         <a class="dropdown-item" href="#">${USUARIO.getLogin()}</a>
+                        <a class="dropdown-item" href="#">id: ${USUARIO.getIdUsuario()}</a>
+                        <a class="dropdown-item" href="#">${USUARIO.getRol()}</a>
                         <div class="dropdown-divider" ></div>
 
                         <form action="Validar" method="post">
@@ -57,7 +58,7 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form> 
         </nav>
-        <div class="m-4" style="height: 600px;">
+        <div class="m4" style="height: 1000px;">
             <iframe name="myframe" style="height: 100%; width: 100%; border: none" ></iframe>
         </div>
 

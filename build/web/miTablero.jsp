@@ -15,11 +15,12 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <link href="css/Estilo.css" rel="stylesheet" type="text/css"/>
         <title>Mis Tableros</title>
     </head>
     <body>
         <div class="d-flex">
-            <div class="col-sm-8" >
+            <div class="col-sm-8" id="hijo">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -39,13 +40,13 @@
                             <td>${um.getFechaCreacion()}</td>
                             <td>${um.isPublico()}</td>          
                             <td>                          
-                                <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
+                                <a href="Controlador?menu=Lists&accion=showLists&nameBoard=${um.getNombre()}&idBoard=${um.getIdTablero()}">
                                     <ion-icon name="clipboard-outline" style="font-size: 30px;"></ion-icon></a>
                                 <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
                                     <ion-icon name="pencil-outline" style="font-size: 30px;"></ion-icon></a>
                                 <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
                                     <ion-icon name="share-social-outline" style="font-size: 30px;"></ion-icon></a>
-                                <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
+                                <a href="Controlador?menu=Board&accion=Delete&idBoard=${um.getIdTablero()}">
                                     <ion-icon name="trash-outline" style="font-size: 30px;"></ion-icon></a>           
                             </td>
                         </tr>

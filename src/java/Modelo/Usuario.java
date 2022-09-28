@@ -1,4 +1,3 @@
-
 package Modelo;
 
 /**
@@ -6,9 +5,10 @@ package Modelo;
  * @author crs12
  */
 public class Usuario {
-    
+
     int idUsuario;
     int idRol;
+    String Rol;
     String Login;
     String Nombre;
     String Correo;
@@ -19,9 +19,10 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, int idRol, String Login, String Nombre, String Correo, String Pass, boolean Activo, boolean interno) {
+    public Usuario(int idUsuario, int idRol, String Rol, String Login, String Nombre, String Correo, String Pass, boolean Activo, boolean interno) {
         this.idUsuario = idUsuario;
         this.idRol = idRol;
+        this.Rol = Rol;
         this.Login = Login;
         this.Nombre = Nombre;
         this.Correo = Correo;
@@ -93,11 +94,13 @@ public class Usuario {
     public void setInterno(boolean interno) {
         this.interno = interno;
     }
-    
- 
 
+    public String getRol() {
+        return Rol;
+    }
 
- 
- 
- 
+    public void setRol(String Rol) {
+        this.Rol = Rol;
+    }
+
 }
