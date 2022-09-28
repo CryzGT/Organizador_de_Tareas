@@ -17,23 +17,22 @@ import java.util.List;
  * @author Anderson
  */
 public class TableroDAO {
+
     Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    
+    int u;
 
-
-    
-     //Listar mis Tableros
-    public List listarTableros(){
-        String sql = "SELECT * FROM tablero;";
+    //Listar mis Tableros
+    public List listBoard(int idUser) {
+        String sql = "SELECT * FROM tablero WHERE id_propietario=" + idUser;
         List<Tablero> ListTable = new ArrayList<>();
-        try{
+        try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            rs = ps.executeQuery(); 
-            while(rs.next()){
+            rs = ps.executeQuery();
+            while (rs.next()) {
                 Tablero tb = new Tablero();
                 tb.setIdTablero(rs.getInt("id_tablero"));
                 tb.setNombre(rs.getString("nombre"));
@@ -41,10 +40,39 @@ public class TableroDAO {
                 tb.setFechaCreacion(rs.getDate("fecha_hora_creacion"));
                 tb.setPublico(rs.getBoolean("publico"));
                 ListTable.add(tb);
-            } 
-        }catch(Exception e){
+            }
+        } catch (Exception e) {
             System.out.println("Error" + e);
         }
         return ListTable;
+    }
+
+    //Agregar Tablero
+    public int addBoard(Tablero ab) {
+        String sql = "insert into tablero (id_propietario, nombre , descripcion , publico) values(?,?,?,?)";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, ab.getIdPropietario());
+            ps.setString(2, ab.getNombre());
+            ps.setString(3, ab.getDescripcion());
+            ps.setBoolean(4, true);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.err.println("Error" + e);
+        }
+        return u;
+    }
+     // Eliminar Tablero
+    public void deleteBoard(int idBoard) {
+        String sql = "DELETE FROM tablero WHERE id_tablero=?";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idBoard);
+            ps.execute();
+        } catch (Exception e) {
+
+        }
     }
 }
