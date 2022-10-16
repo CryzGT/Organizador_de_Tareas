@@ -52,7 +52,7 @@
                             <td>${ls.getNombreLista()}</td>
                             <td>${ls.getDescLista()}</td>        
                             <td>                          
-                                <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
+                                <a href="Controlador?menu=Tareas&accion=showTareas&nameListado=${ls.getNombreLista()}&idListadoTareas=${ls.getIdLista()}">
                                     <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
                                     <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
                                     <ion-icon name="trash" style="font-size: 40px;"></ion-icon></a>
