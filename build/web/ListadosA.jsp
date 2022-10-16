@@ -1,8 +1,9 @@
 <%-- 
-    Document   : Listado
-    Created on : Sep 15, 2022, 3:26:06 PM
-    Author     : Anderson
+    Document   : ListadosA
+    Created on : 14/10/2022, 08:03:04 PM
+    Author     : Sofia Paniagua
 --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -14,24 +15,22 @@
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <link href="css/Estilo.css" rel="stylesheet" type="text/css"/>
-        <title>Usuarios</title>
+        <title>Listados Actividades</title>
     </head>
     <body>
         <div class="contenedor">
             <div class="card col-sm-8" id="hijo">
                 <div  style="display: inline-block">
                     <ion-icon name="clipboard-outline" style="font-size: 64px;"></ion-icon>
-                    <h1 style="text-align: center">Listado de Tareas del Tablero: ${NAMEBOARD.getNombre()}</h1>
+                    <h1 style="text-align: center">Listado de Actividades de la Tarea: ${NOMBRETAREA.getNombre()}</h1>
                 </div>
             </div>
         </div>
         <div class="d-flex">
             <div class="col-sm-8" id="botonLista">
                 <div>
-                    <a id="botonLista" class="btn btn-outline-success" href="Controlador?menu=Lists&accion=addList">Crear Nueva Lista
-                        <ion-icon name="add-outline" style="font-size: 30px;"></ion-icon></a>
-                        
-                        
+                    <a id="botonLista" class="btn btn-outline-success" href="Controlador?menu=listado_a&accion=add">Crear Nuevo Listado 
+                        <ion-icon name="add-outline" style="font-size: 30px;"></ion-icon></a>     
                 </div>
             </div>
         </div>
@@ -49,13 +48,15 @@
                     <c:forEach  var="ls" items="${SHOWLISTS}">
                         <tr>
                             <td><ion-icon name="clipboard-outline" style="font-size: 35px;"></ion-icon></td>
-                            <td>${ls.getNombreLista()}</td>
-                            <td>${ls.getDescLista()}</td>        
-                            <td>                          
-                                <a href="Controlador?menu=Tareas&accion=showTareas&nameListado=${ls.getNombreLista()}&idListadoTareas=${ls.getIdLista()}">
+                            <td>${ls.getNombre()}</td>
+                            <td>${ls.getDescripcion()}</td>        
+                            <td>              
+                                <a href="Controlador?menu=actividades&accion=showLists&idListadoA=${ls.getIdListado()}&nombreListadoA=${ls.getNombre()}">
                                     <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
-                                    <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
-                                    <ion-icon name="trash" style="font-size: 40px;"></ion-icon></a>
+                               <!-- <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=$ {um.getIdTablero()}">
+                                    <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
+                                    <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=$ {um.getIdTablero()}">
+                                    <ion-icon name="trash" style="font-size: 40px;"></ion-icon></a>-->
                         </tr>
                     </c:forEach>
                 </table>
