@@ -1,3 +1,9 @@
+<%-- 
+    Document   : newUser
+    Created on : Oct 20, 2022, 10:19:23 PM
+    Author     : Anderson
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,46 +13,40 @@
         <title>Login</title>
     </head>
     <body>
-        <div class="container mt-4 col-lg-4">
+          <div class="container mt-4 col-lg-4">
             <div class="card col-sm-10">
                 <div class="card-body">
-                    <form class="form-sign" action="Validar" method="POST">
+                    <form class="form-sign" action="Controlador" method="POST">
                         <div class="form-group text-center"> 
-                            <h3>Login</h3>
+                            <h3>Crear Cuenta</h3>
                             <img src="img/DIGICAL-CALENDARIO-logo.png" alt=""/>
-                            <label>Bienvenido al Sistema de Organizador de Tareas</label>
-
                         </div>
                         <div class="form-group"> 
-                            <label>Usuario:</label>
+                            <label>Nombre:</label>
                             <input type="text" name="txtuser" class="form-control"> 
-
-                        </div>
-
-                        <div class="form-group"> 
+                            <label>Login:</label>
+                            <input type="text" name="txtlogin" class="form-control"> 
+                            <label>Correo:</label>
+                            <input type="text" name="txtcorreo" class="form-control">
                             <label>Password:</label>
                             <input type="password" name="txtpass" class="form-control"> 
-
                         </div>
-                        <div class="d-flex"> 
-                            <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block">
-                            <input style="margin-left: 70px" type="submit" name="accion" value="Crear Cuenta" class="btn btn-warning btn-block">
-                        </div>
-
+                        <input type="submit" name="menu" value="Crear" class="btn btn-primary btn-block">
                     </form>
 
                 </div>
             </div>
         </div>
-
-
-
-
-
+        
+        
+        
+        
+        
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     </body>
 </html>
+
 

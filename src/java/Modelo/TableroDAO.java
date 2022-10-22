@@ -63,16 +63,37 @@ public class TableroDAO {
         }
         return u;
     }
-     // Eliminar Tablero
-    public void deleteBoard(int idBoard) {
-        String sql = "DELETE FROM tablero WHERE id_tablero=?";
+   //Mostra tablero por ID
+     public Tablero idBoard(int id) {
+        Tablero board = new Tablero();
+
+        String sql = "SELECT * FROM tablero WHERE id_tablero=" + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, idBoard);
-            ps.execute();
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                board.setNombre(rs.getString("nombre"));
+                board.setDescripcion(rs.getString("descripcion"));
+            }
         } catch (Exception e) {
 
         }
+        return board;
+    }
+     
+     //Modificar Tablero
+      public int modifyBoard(Tablero ab) {
+        String sql = "UPDATE  tablero SET nombre=?, descripcion=? WHERE id_tablero=? ";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, ab.getNombre());
+            ps.setString(2, ab.getDescripcion());
+            ps.setInt(3, ab.getIdTablero());
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return u;
     }
 }

@@ -20,7 +20,8 @@
             <div class="card col-sm-8" id="hijo">
                 <div  style="display: inline-block">
                     <ion-icon name="clipboard-outline" style="font-size: 64px;"></ion-icon>
-                        <h1 style="text-align: center">Crear Lista</h1>
+                    <h1 style="text-align: center">Administración Lista</h1>
+                    <h1 style="text-align: center">${NAMELIST.getNombreLista()}</h1>
                 </div>
             </div>
         </div>
@@ -30,14 +31,15 @@
                     <form action="Controlador?menu=Lists" method="POST">
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input class="form-control" type="text" name="txtnombre" placeholder="Ingrese un nombre para su Listado">
+                            <input class="form-control" type="text" name="txtnombre" placeholder="Ingrese un nombre para su Listado" value="${editList.getNombreLista()}">
                         </div>
                         <div class="form-group">
                             <label>Descripción</label>
-                            <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingrese una descripción para su Listado">
+                            <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingrese una descripción para su Listado" value="${editList.getDescLista()}">
                         </div>  
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Cancelar"  class="btn btn-warning" >
+                        <input type="submit" name="accion" value="Modificar" class="btn btn-warning">
+                        <input type="submit" name="accion" value="Cancelar"  class="btn btn-danger" >
                     </form>
                 </div>
             </div>
