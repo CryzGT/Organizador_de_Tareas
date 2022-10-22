@@ -42,12 +42,10 @@
                             <td>                          
                                 <a href="Controlador?menu=Lists&accion=showLists&nameBoard=${um.getNombre()}&idBoard=${um.getIdTablero()}">
                                     <ion-icon name="clipboard-outline" style="font-size: 30px;"></ion-icon></a>
-                                <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
+                                <a href="Controlador?menu=Board&accion=editBoard&nameBoard=${um.getNombre()}&idBoard=${um.getIdTablero()}">
                                     <ion-icon name="pencil-outline" style="font-size: 30px;"></ion-icon></a>
                                 <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
-                                    <ion-icon name="share-social-outline" style="font-size: 30px;"></ion-icon></a>
-                                <a href="Controlador?menu=Board&accion=Delete&idBoard=${um.getIdTablero()}">
-                                    <ion-icon name="trash-outline" style="font-size: 30px;"></ion-icon></a>           
+                                    <ion-icon name="share-social-outline" style="font-size: 30px;"></ion-icon></a>         
                             </td>
                         </tr>
                     </c:forEach>
