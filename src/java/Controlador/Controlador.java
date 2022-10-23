@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Listas;
 import Modelo.ListasDAO;
 import Modelo.Tablero;
+import Modelo.Etiqueta;
 import Modelo.TableroDAO;
 import java.io.IOException;
 import java.io.IOException;
@@ -19,6 +20,7 @@ public class Controlador extends HttpServlet {
 
     TableroDAO tdao = new TableroDAO();
     Tablero ab = new Tablero();
+    Etiqueta et = new Etiqueta();
     ListasDAO ldao = new ListasDAO();
     Listas lt = new Listas();
     TareaDAO tareaD = new TareaDAO();
@@ -196,6 +198,18 @@ public class Controlador extends HttpServlet {
 
                     request.getRequestDispatcher("Controlador?menu=Tareas&accion=showTareas&idListadoTareas=" + tarea.getIdListado() + "&nameListado=" + lt.getNombreLista()).forward(request, response);
                     break;
+                case "Mover":
+                    nombreT = request.getParameter("nombreTarea");
+                    idTarea = Integer.parseInt(request.getParameter("idTarea"));
+                    tarea.setNombre(nombreT);
+                    request.setAttribute("NOMBRETAREA", tarea);
+                    ab.setNombre(nameBoard);
+                    request.setAttribute("NAMEBOARD", ab);
+                    List showListM = ldao.listLists(ab.getIdTablero());
+                    request.setAttribute("SHOWLISTS", showListM);
+                     request.getRequestDispatcher("moverTarea.jsp").forward(request, response);
+
+                    break;
                 case "Cancelar":
                     lt.setIdTablero(idBoard);
                     request.getRequestDispatcher("Controlador?menu=Tareas&accion=showTareas&idListadoTareas=" + tarea.getIdListado() + "&nameListado=" + lt.getNombreLista()).forward(request, response);
@@ -287,7 +301,30 @@ public class Controlador extends HttpServlet {
                     throw new AssertionError();
             }
         }
-
+        if (menu.equals("Etiqueta")) {
+            switch (accion) {
+                case "addEtiqueta":
+                    nameBoard = request.getParameter("nameBoard");
+                    idBoard = Integer.parseInt(request.getParameter("idBoard"));
+                    ab.setNombre(nameBoard);
+                    request.setAttribute("NAMEBOARD", ab);
+                    List listarE = tdao.listEtiquetas(idBoard);
+                    request.setAttribute("ETIQUETAS", listarE);
+                    request.getRequestDispatcher("addEtiqueta.jsp").forward(request, response);
+                    break;
+                case "Agregar":
+                    ab.setNombre(nameBoard);
+                    ab.setIdTablero(idBoard);
+                    String nombre = request.getParameter("txtnombre");
+                    et.setIdTablero(idBoard);
+                    et.setNombreEtiqueta(nombre);
+                    tdao.addEtiqueta(et);
+                    request.getRequestDispatcher("Controlador?menu=Etiqueta&accion=addEtiqueta&nameBoard=" + ab.getNombre() + "&idBoard=" + ab.getIdTablero()).forward(request, response);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        }
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

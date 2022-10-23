@@ -43,7 +43,7 @@
                     </button>
                     <div class="dropdown-menu text-center" >
                         <a class="dropdown-item" href="#">${USUARIO.getLogin()}</a>
-                        <a class="dropdown-item" href="#">id: ${USUARIO.getIdUsuario()}</a>
+                        <a class="dropdown-item" href="#">${USUARIO.getCorreo()}</a>
                         <a class="dropdown-item" href="#">${USUARIO.getRol()}</a>
                         <div class="dropdown-divider" ></div>
 

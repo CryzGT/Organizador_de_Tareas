@@ -1,10 +1,11 @@
 <%-- 
-    Document   : addTablero
-    Created on : Sep 12, 2022, 6:54:35 PM
+    Document   : addEtiqueta
+    Created on : Oct 22, 2022, 4:58:17 PM
     Author     : Anderson
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,32 +21,42 @@
         <div class="contenedor">
             <div class="card col-sm-8" id="hijo">
                 <div  style="display: inline-block">
-                    <ion-icon name="clipboard-outline" style="font-size: 64px;"></ion-icon>
-                    <h1 style="text-align: center">Administración Tablero</h1>
-                    <h1 style="text-align: center">${NAMEBOARD.getNombre()}</h1>
+                    <ion-icon name="bookmarks-outline" style="font-size: 64px;"></ion-icon>
+                    <h1 style="text-align: center">Etiquetas</h1>
+                    <h1 style="text-align: center">Tablero: ${NAMEBOARD.getNombre()}</h1>
                 </div>
             </div>
         </div>
         <div class="d-flex" >
             <div class="card col-sm-8" id="hijo">
                 <div class="card-body">
-                    <form action="Controlador?menu=Board&idUser=${USUARIO.getIdUsuario()}" method="POST">
+                    <form action="Controlador?menu=Etiqueta" method="POST">
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input class="form-control" type="text" name="txtnombre" placeholder="Ingrese un nombre para su Tablero" value="${editBoard.getNombre()}">
+                            <input class="form-control" type="text" name="txtnombre" placeholder="Ingrese un nombre para su etiqueta">
                         </div>
-                        <div class="form-group">
-                            <label>Descripción</label>
-                            <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingrese una descripción para su Tablero" value="${editBoard.getDescripcion()}">
-                        </div>  
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Modificar" class="btn btn-warning">
-                        <input type="submit" name="accion" value="Cancelar"  class="btn btn-danger" >
                     </form>
                 </div>
             </div>
         </div>
-                        
+        <div class="d-flex">
+            <div class="col-sm-8" id="hijo">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                    <c:forEach  var="et" items="${ETIQUETAS}">
+                        <tr>
+                            <td>${et.getIdEtiqueta()}</td>
+                            <td>${et.getNombreEtiqueta()}</td>
+                    </c:forEach>
+                </table>
+            </div>
+        </div>
 
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -53,5 +64,3 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 </html>
-
-

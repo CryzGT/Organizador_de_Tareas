@@ -29,6 +29,7 @@ public class UsuarioDAO {
                 us.setPass(rs.getString("contrasena"));
                 us.setNombre(rs.getString("nombre"));
                 us.setIdUsuario(rs.getInt("id_usuario"));
+                us.setCorreo(rs.getString("correo"));
             }
 
         } catch (Exception e) {

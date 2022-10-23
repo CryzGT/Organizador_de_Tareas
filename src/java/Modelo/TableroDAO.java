@@ -96,4 +96,38 @@ public class TableroDAO {
         }
         return u;
     }
+      //Agregar etiqueta
+    public int addEtiqueta(Etiqueta et) {
+        String sql = "insert into etiqueta (nombre , id_tablero , activa) values(?,?,?)";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, et.getNombreEtiqueta());
+            ps.setInt(2, et.getIdTablero());
+            ps.setBoolean(3, true);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.err.println("Error" + e);
+        }
+        return u;
+    }
+    
+     public List listEtiquetas(int idBoard) {
+        String sql = "SELECT * FROM etiqueta WHERE id_tablero=" + idBoard;
+        List<Etiqueta> ListEtiqueta = new ArrayList<>();
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Etiqueta et = new Etiqueta();
+                et.setNombreEtiqueta(rs.getString("nombre"));
+                et.setIdTablero(rs.getInt("id_etiqueta"));
+                ListEtiqueta.add(et);
+            }
+        } catch (Exception e) {
+            System.out.println("Error" + e);
+        }
+        return ListEtiqueta;
+    }
 }

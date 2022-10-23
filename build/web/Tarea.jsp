@@ -9,18 +9,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-           <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-           <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-           <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-           <link href="css/Estilo.css" rel="stylesheet" type="text/css"/>
-           <title>Tareas</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <link href="css/Estilo.css" rel="stylesheet" type="text/css"/>
+        <title>Tareas</title>
     </head>
-    
-    
+
+
     <body>
-         <div class="contenedor">
+        <div class="contenedor">
             <div class="card col-sm-8" id="hijo">
                 <div  style="display: inline-block">
                     <ion-icon name="clipboard-outline" style="font-size: 64px;"></ion-icon>
@@ -50,18 +50,16 @@
                     <c:forEach  var="tarea" items="${SHOWTAREAS}">
                         <tr>
                             <td><ion-icon name="clipboard-outline" style="font-size: 35px;"></ion-icon></td>
-                            <td>${tarea.getNombre()}</td>
-                            <td>${tarea.getDescripcion()}</td>        
-                            <td>
-                                     <!--Controlador?menu=Tareas&accion=showTareas&nameListado=$ {ls.getNombreLista()}&idListadoTareas=$ {ls.getIdLista()}"-->
-                                <a href="Controlador?menu=listado_a&accion=showLists&idTarea=${tarea.getIdTarea()}&nombreTarea=${tarea.getNombre()}">
-                                    <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
-                         <!--       <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=$ {um.getIdTablero()}">
-                                    <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
-                                    <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=$ {um.getIdTablero()}">
-                                    <ion-icon name="trash" style="font-size: 40px;"></ion-icon></a>-->
-                        </tr>
-                    </c:forEach>
+                        <td>${tarea.getNombre()}</td>
+                        <td>${tarea.getDescripcion()}</td>        
+                        <td>
+
+                            <a href="Controlador?menu=listado_a&accion=showLists&idTarea=${tarea.getIdTarea()}&nombreTarea=${tarea.getNombre()}">
+                                <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
+                            <a href="Controlador?menu=Tareas&accion=Mover&idTarea=${tarea.getIdTarea()}&nombreTarea=${tarea.getNombre()}">
+                                <ion-icon name="send-sharp" style="font-size: 40px;"></ion-icon></a>
+
+                        </c:forEach>
                 </table>
             </div>
         </div>

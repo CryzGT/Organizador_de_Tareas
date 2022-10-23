@@ -44,6 +44,8 @@
                                     <ion-icon name="clipboard-outline" style="font-size: 30px;"></ion-icon></a>
                                 <a href="Controlador?menu=Board&accion=editBoard&nameBoard=${um.getNombre()}&idBoard=${um.getIdTablero()}">
                                     <ion-icon name="pencil-outline" style="font-size: 30px;"></ion-icon></a>
+                                <a href="Controlador?menu=Etiqueta&accion=addEtiqueta&nameBoard=${um.getNombre()}&idBoard=${um.getIdTablero()}">
+                                    <ion-icon name="bookmarks-outline" style="font-size: 30px;"></ion-icon></a>
                                 <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
                                     <ion-icon name="share-social-outline" style="font-size: 30px;"></ion-icon></a>         
                             </td>
@@ -51,6 +53,8 @@
                     </c:forEach>
                 </table>
             </div>
+
+
         </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
