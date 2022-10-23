@@ -3,11 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/Modelo/Listas.java</file>
             <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/Controlador/Controlador.java</file>
             <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/web/Listas.jsp</file>
             <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/Modelo/TareaDAO.java</file>
             <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/config/Conexion.java</file>
+=======
+            <file>file:/D:/UMG/8ta.%20Semestre%202022/Analisis%20Sistemas%20II/Proyecto_final/Organizador_de_Tareas/src/java/Controlador/Controlador.java</file>
+            <file>file:/D:/UMG/8ta.%20Semestre%202022/Analisis%20Sistemas%20II/Proyecto_final/Organizador_de_Tareas/web/addTarea.jsp</file>
+            <file>file:/D:/UMG/8ta.%20Semestre%202022/Analisis%20Sistemas%20II/Proyecto_final/Organizador_de_Tareas/web/Tarea.jsp</file>
+            <file>file:/D:/UMG/8ta.%20Semestre%202022/Analisis%20Sistemas%20II/Proyecto_final/Organizador_de_Tareas/src/java/config/Conexion.java</file>
+            <file>file:/D:/UMG/8ta.%20Semestre%202022/Analisis%20Sistemas%20II/Proyecto_final/Organizador_de_Tareas/src/java/Controlador/Validar.java</file>
+            <file>file:/D:/UMG/8ta.%20Semestre%202022/Analisis%20Sistemas%20II/Proyecto_final/Organizador_de_Tareas/web/Listas.jsp</file>
+            <file>file:/D:/UMG/8ta.%20Semestre%202022/Analisis%20Sistemas%20II/Proyecto_final/Organizador_de_Tareas/src/java/Modelo/Tarea.java</file>
+            <file>file:/D:/UMG/8ta.%20Semestre%202022/Analisis%20Sistemas%20II/Proyecto_final/Organizador_de_Tareas/web/index.jsp</file>
+            <file>file:/D:/UMG/8ta.%20Semestre%202022/Analisis%20Sistemas%20II/Proyecto_final/Organizador_de_Tareas/src/java/Modelo/UsuarioDAO.java</file>
+>>>>>>> 60d8ab80f0c19cd6620211805166ee3e492c37ad
         </group>
     </open-files>
 </project-private>

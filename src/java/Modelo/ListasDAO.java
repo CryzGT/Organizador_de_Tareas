@@ -58,4 +58,38 @@ public class ListasDAO {
         }
         return u;
     }
+    
+       //Mostrar Lista por ID
+     public Listas idList(int id) {
+        Listas list = new Listas();
+
+        String sql = "SELECT * FROM listado_tareas WHERE id_listado=" + id;
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.setNombreLista(rs.getString("nombre"));
+                list.setDescLista(rs.getString("descripcion"));
+            }
+        } catch (Exception e) {
+
+        }
+        return list;
+    }
+     
+     //Modificar Listado
+      public int modifyList(Listas lt) {
+        String sql = "UPDATE  listado_tareas SET nombre=?, descripcion=? WHERE id_listado=? ";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, lt.getNombreLista());
+            ps.setString(2, lt.getDescLista());
+            ps.setInt(3, lt.getIdLista());
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return u;
+    }
 }

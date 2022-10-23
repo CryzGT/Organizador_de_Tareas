@@ -43,7 +43,7 @@ public class Validar extends HttpServlet {
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
 
-        System.out.println("Esto sale en pantalla\n");
+           System.out.println("Esto sale en pantalla\n");
         if (accion.equalsIgnoreCase("Ingresar")) {
             String user = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
@@ -55,8 +55,12 @@ public class Validar extends HttpServlet {
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-        } else {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+        } if(accion.equals("Crear Cuenta")) {
+            request.getRequestDispatcher("Controlador?menu=newUser").forward(request, response);
+        }
+        
+        else {
+             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
 
     }

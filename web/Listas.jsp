@@ -30,8 +30,8 @@
                 <div>
                     <a id="botonLista" class="btn btn-outline-success" href="Controlador?menu=Lists&accion=addList">Crear Nueva Lista
                         <ion-icon name="add-outline" style="font-size: 30px;"></ion-icon></a>
-                        
-                        
+
+
                 </div>
             </div>
         </div>
@@ -49,15 +49,15 @@
                     <c:forEach  var="ls" items="${SHOWLISTS}">
                         <tr>
                             <td><ion-icon name="clipboard-outline" style="font-size: 35px;"></ion-icon></td>
-                            <td>${ls.getNombreLista()}</td>
-                            <td>${ls.getDescLista()}</td>        
-                            <td>                          
-                                <a href="Controlador?menu=Tareas&accion=showTareas&nameListado=${ls.getNombreLista()}&idListadoTareas=${ls.getIdLista()}">
-                                    <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
-                                    <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=${um.getIdTablero()}">
-                                    <ion-icon name="trash" style="font-size: 40px;"></ion-icon></a>
-                        </tr>
-                    </c:forEach>
+                        <td>${ls.getNombreLista()}</td>
+                        <td>${ls.getDescLista()}</td>        
+                        <td>                          
+                            <a href="Controlador?menu=Tareas&accion=showTareas&nameListado=${ls.getNombreLista()}&idListadoTareas=${ls.getIdLista()}">
+                                <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
+                            <a href="Controlador?menu=Lists&accion=editList&nameListado=${ls.getNombreLista()}&idListadoT=${ls.getIdLista()}">
+                                <ion-icon name="pencil-outline" style="font-size: 40px;"></ion-icon></a>
+                            </tr>
+                        </c:forEach>
                 </table>
             </div>
         </div>

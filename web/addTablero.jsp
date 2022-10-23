@@ -21,7 +21,8 @@
             <div class="card col-sm-8" id="hijo">
                 <div  style="display: inline-block">
                     <ion-icon name="clipboard-outline" style="font-size: 64px;"></ion-icon>
-                        <h1 style="text-align: center">Crear Tablero</h1>
+                    <h1 style="text-align: center">Administración Tablero</h1>
+                    <h1 style="text-align: center">${NAMEBOARD.getNombre()}</h1>
                 </div>
             </div>
         </div>
@@ -31,14 +32,15 @@
                     <form action="Controlador?menu=Board&idUser=${USUARIO.getIdUsuario()}" method="POST">
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input class="form-control" type="text" name="txtnombre" placeholder="Ingrese un nombre para su Tablero">
+                            <input class="form-control" type="text" name="txtnombre" placeholder="Ingrese un nombre para su Tablero" value="${editBoard.getNombre()}">
                         </div>
                         <div class="form-group">
                             <label>Descripción</label>
-                            <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingrese una descripción para su Tablero">
+                            <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingrese una descripción para su Tablero" value="${editBoard.getDescripcion()}">
                         </div>  
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Cancelar"  class="btn btn-warning" >
+                        <input type="submit" name="accion" value="Modificar" class="btn btn-warning">
+                        <input type="submit" name="accion" value="Cancelar"  class="btn btn-danger" >
                     </form>
                 </div>
             </div>
