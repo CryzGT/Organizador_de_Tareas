@@ -25,7 +25,7 @@ public class TareaDAO {
     ResultSet rs;
     int u;
     
-     //Listar mis Tableros
+     //Listar mis tareas
     public List listarTareas(int idListado) {
         String sql = "SELECT * FROM tarea WHERE id_listado=" + idListado;
         List<Tarea> ListTable = new ArrayList<>();
@@ -38,6 +38,7 @@ public class TareaDAO {
                 tarea.setIdTarea(rs.getInt("id_tarea"));
                 tarea.setIdListado(rs.getInt("id_listado"));
                 tarea.setIdEstado(rs.getInt("id_estado"));
+                tarea.setEstado(rs.getString("estado"));
                 tarea.setIdUsuarioAsignado(rs.getInt("id_usuario_asignado"));
                 tarea.setNombre(rs.getString("nombre"));
                 tarea.setDescripcion(rs.getString("descripcion"));
@@ -51,11 +52,11 @@ public class TareaDAO {
         return ListTable;
     }
 
-    //Agregar Tablero
+    //Agregar tarea
     public int agregarTarea(Tarea tarea) {
         String sql = "insert into tarea (id_listado, id_estado, id_usuario_asignado,"
-                + "nombre, descripcion, fecha_inicio, fecha_fin) "
-                + "values(?,?,?,?,?,?,?)";
+                + "nombre, descripcion, fecha_inicio, fecha_fin, estado) "
+                + "values(?,?,?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -67,8 +68,34 @@ public class TareaDAO {
             ps.setString(5, tarea.getDescripcion());
             ps.setDate(6, (Date) tarea.getFechaInicio());
             ps.setDate(7, (Date) tarea.getFechaFin());
+            ps.setString(8, "Iniciada");
             
             ps.executeUpdate();
+        } catch (Exception e) {
+            System.err.println("Error" + e);
+        }
+        return u;
+    }
+    
+        //Agregar Tablero
+    public int editarTarea(Tarea tarea) {
+       
+        String sql = "update tarea set id_listado = ?, id_usuario_asignado = ?, fecha_inicio = ?, fecha_fin = ?, "
+                + "nombre = ?, descripcion = ? where id_tarea = ?";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, tarea.getIdListado());
+            ps.setInt(2, tarea.getIdUsuarioAsignado());
+            ps.setDate(3, (Date) tarea.getFechaInicio());
+            ps.setDate(4, (Date) tarea.getFechaFin());
+            ps.setString(5, tarea.getNombre());
+            ps.setString(6, tarea.getDescripcion());
+            ps.setInt(7, tarea.getIdTarea());
+            
+            ps.executeUpdate();
+            
         } catch (Exception e) {
             System.err.println("Error" + e);
         }
@@ -87,5 +114,44 @@ public class TareaDAO {
         } catch (Exception e) {
 
         }
+    }
+    
+    public int agregarComentario(int idTarea, String comentario){
+        String sql = "insert into comentario (id_tarea, usuario, detalle)"
+                + "values(?,?,?)";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, idTarea);
+            ps.setInt(2, 1);
+            ps.setString(3, comentario);
+            
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.err.println("Error" + e);
+        }
+        return u;
+    }
+    
+        public List listarComentarios(int idTarea) {
+        String sql = "SELECT * FROM comentario WHERE id_tarea=" + idTarea;
+        List<Comentario> ListTable = new ArrayList<>();
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Comentario comentario = new Comentario();
+                comentario.setIdComentario(rs.getInt("id_comentario"));
+                comentario.setUsuario(rs.getString("usuario"));
+                comentario.setDetalle(rs.getString("detalle"));
+                comentario.setIdTarea(rs.getInt("id_tarea"));
+                ListTable.add(comentario);
+            }
+        } catch (Exception e) {
+            System.out.println("Error" + e);
+        }
+        return ListTable;
     }
 }

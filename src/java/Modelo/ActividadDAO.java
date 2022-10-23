@@ -24,7 +24,7 @@ public class ActividadDAO {
     ResultSet rs;
     int u;
     
-     //Listar mis Tableros
+     //Listar mis actividades
     public List listarActividades(int idListado) {
         String sql = "SELECT * FROM actividad WHERE id_listado=" + idListado;
         List<Actividad> ListTable = new ArrayList<>();
@@ -49,7 +49,7 @@ public class ActividadDAO {
         return ListTable;
     }
 
-    //Agregar Tablero
+    //Agregar Actividad
     public int agregarActividades(Actividad actividad) {
         String sql = "insert into actividad (id_listado, nombre, "
                 + "descripcion, finalizada)"
@@ -71,8 +71,30 @@ public class ActividadDAO {
         return u;
     }
     
+        //Editar Actividad
+    public int editarActividades(Actividad actividad) {
+        String sql = "update actividad set id_listado=?, nombre=?, "
+                + "descripcion=?, finalizada=? "
+                + "where id_actividad = ?";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, actividad.getIdListado());
+            ps.setString(2, actividad.getNombre());
+            ps.setString(3, actividad.getDescripcion());
+            ps.setBoolean(4, actividad.getFinalizada() );
+            ps.setInt(5, actividad.getIdActividad() );
+            
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+            System.err.println("Error" + e);
+        }
+        return u;
+    }
     
-     // Eliminar Tarea
+     // Eliminar Actvidad
     public void eliminarActividades(int idActividad) {
         String sql = "DELETE FROM actividad WHERE id_actividad=?";
         try {

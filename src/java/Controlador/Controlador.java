@@ -15,6 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import Modelo.*; //Sofia - importar todos los modelos
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+        
+       
 public class Controlador extends HttpServlet {
 
     TableroDAO tdao = new TableroDAO();
@@ -170,8 +177,31 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("SHOWTAREAS", showList);
                     request.getRequestDispatcher("Tarea.jsp").forward(request, response);
                     break;
+                /*case "showComentarios":
+                    
+                    List comentarios =  tareaD.listarComentarios(idTarea) ;// ldao.listLists(idBoard);
+                    request.setAttribute("SHOWCOMENTARIOS", comentarios);
+                    request.getRequestDispatcher("Tarea.jsp").forward(request, response);
+                    break;*/
                 case "add":
                     request.getRequestDispatcher("addTarea.jsp").forward(request, response);
+                    break;
+                case "edit":
+                    nombreT = request.getParameter("nombreTarea");
+                    idTarea = Integer.parseInt(request.getParameter("idTarea"));
+                    String desc = request.getParameter("desc");
+                    String fInicio = request.getParameter("fechaInicio");
+                    String fFin = request.getParameter("fechaFin");
+                    String est = request.getParameter("estado");                    
+                    
+                    request.setAttribute("nombreTarea", nombreT);                    
+                    request.setAttribute("idTarea", idTarea);
+                    request.setAttribute("desc", desc);
+                    request.setAttribute("fechaInicio", fInicio);                    
+                    request.setAttribute("fechaFin", fFin);
+                    request.setAttribute("estado", est);
+                    
+                    request.getRequestDispatcher("editTarea.jsp").forward(request, response);
                     break;
                 case "Agregar":
                     //int id_listado = 1; // Integer.parseInt(request.getParameter("txtlistado"));
@@ -180,6 +210,43 @@ public class Controlador extends HttpServlet {
                     String estado = null;
                     String nombre = request.getParameter("txtnombre");
                     String descripcion = request.getParameter("txtdescripcion");
+
+                    Date fechainicio = null;
+                    Date fechafin = null;
+  
+                    tarea.setIdListado(idListadoT);
+                    tarea.setIdEstado(id_estado);
+                    tarea.setIdUsuarioAsignado(id_usuario_asignado);
+                    tarea.setEstado(estado);
+                    tarea.setNombre(nombre);
+                    tarea.setDescripcion(descripcion);
+                    tarea.setFechaInicio(fechainicio);
+                    tarea.setFechaFin(fechafin);
+                    
+                    tareaD.agregarTarea(tarea);
+                    
+                    request.getRequestDispatcher("Controlador?menu=Tareas&accion=showTareas&idListadoTareas=" + tarea.getIdListado()+"&nameListado=" + lt.getNombreLista()).forward(request, response);
+                    break;
+                    
+                case "addComentario":
+                    
+                    String comentario = request.getParameter("txtcomentario");
+                    System.out.println("comentario que trae =="  + comentario);
+                    tareaD.agregarComentario(idTarea, comentario);
+  
+                    //request.getRequestDispatcher("Controlador?menu=Tareas&accion=showTareas&idListadoTareas=" + tarea.getIdListado()+"&nameListado=" + lt.getNombreLista()).forward(request, response);
+                    //request.getRequestDispatcher("Controlador?menu=listado_a&accion=showLists&idTarea=" + idTarea+"&nombreTarea=" + tarea.getNombre()).forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=listado_a&accion=showLists&idTarea=" + idTarea +"&nombreTarea=" + tarea.getNombre()).forward(request, response);
+                    
+                    break;                 
+                    
+                 case "Editar":
+                
+                    id_estado = 1; //Iniciada
+                    id_usuario_asignado = 1; //Admin - cambiar  
+                    estado =  request.getParameter("txtestado");
+                    nombre = request.getParameter("txtnombre");
+                    descripcion = request.getParameter("txtdescripcion");
                     String fecha_i = request.getParameter("txtfechainicio");
                     String fecha_f = request.getParameter("txtfechafin");
 
@@ -192,10 +259,19 @@ public class Controlador extends HttpServlet {
                     tarea.setFechaInicio(null);
                     tarea.setFechaFin(null);
 
+                    tarea.setIdTarea(idTarea);
+                    
+                    tareaD.editarTarea(tarea);
+                    
+                    request.getRequestDispatcher("Controlador?menu=Tareas&accion=showTareas&idListadoTareas=" + tarea.getIdListado()+"&nameListado=" + lt.getNombreLista()).forward(request, response);
+
+
                     tareaD.agregarTarea(tarea);
 
                     request.getRequestDispatcher("Controlador?menu=Tareas&accion=showTareas&idListadoTareas=" + tarea.getIdListado() + "&nameListado=" + lt.getNombreLista()).forward(request, response);
+
                     break;
+                    
                 case "Cancelar":
                     lt.setIdTablero(idBoard);
                     request.getRequestDispatcher("Controlador?menu=Tareas&accion=showTareas&idListadoTareas=" + tarea.getIdListado() + "&nameListado=" + lt.getNombreLista()).forward(request, response);
@@ -216,10 +292,35 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("NOMBRETAREA", tarea);
                     List showList = l_actividadesD.listarListadosActividades(idTarea);// ldao.listLists(idBoard);
                     request.setAttribute("SHOWLISTS", showList);
+                    request.setAttribute("idTarea", idTarea);
+                    
+                    List comentarios =  tareaD.listarComentarios(idTarea) ;// ldao.listLists(idBoard);
+                    request.setAttribute("SHOWCOMENTARIOS", comentarios);
+                                       
                     request.getRequestDispatcher("ListadosA.jsp").forward(request, response);
+                    
+                    
+                    //request.getRequestDispatcher("Tarea.jsp").forward(request, response);
+
                     break;
                 case "add":
                     request.getRequestDispatcher("addListadosA.jsp").forward(request, response);
+                    break;
+                case "edit":
+                    nombreListadoA = request.getParameter("nombreListado");
+                    idListadoA = Integer.parseInt(request.getParameter("idListado"));
+                    String descListadoA = request.getParameter("desc");
+                    
+                    //Boolean finalizada = request.getParameter("finalizada").equals("1");
+
+                    String est = request.getParameter("estado");                    
+                    
+                    request.setAttribute("nombreListado", nombreListadoA);                    
+                    request.setAttribute("idListado", idListadoA);
+                    request.setAttribute("desc", descListadoA);
+                   // request.setAttribute("finalizada", finalizada);
+                    
+                    request.getRequestDispatcher("editListadoA.jsp").forward(request, response);
                     break;
                 case "Agregar":
 
@@ -238,6 +339,20 @@ public class Controlador extends HttpServlet {
                     l_actividadesD.agregarListadoActividades(l_actividades);
 
                     request.getRequestDispatcher("Controlador?menu=listado_a&accion=showLists&idTarea=" + l_actividades.getIdTarea() + "&nombreTarea=" + tarea.getNombre()).forward(request, response);
+                    break;
+                case "Editar":
+                    
+                    nombre = request.getParameter("txtnombre");
+                    descripcion = request.getParameter("txtdescripcion");
+
+                    l_actividades.setIdTarea(idTarea);
+                    l_actividades.setNombre(nombre);
+                    l_actividades.setDescripcion(descripcion);
+                    l_actividades.setIdListado(idListadoA);
+                               
+                    l_actividadesD.editarListadoActividades(l_actividades);
+                    
+                    request.getRequestDispatcher("Controlador?menu=listado_a&accion=showLists&idTarea=" + l_actividades.getIdTarea()+"&nombreTarea=" + tarea.getNombre()).forward(request, response);
                     break;
                 case "Cancelar":
                     lt.setIdTablero(idBoard);
@@ -263,9 +378,29 @@ public class Controlador extends HttpServlet {
                 case "add":
                     request.getRequestDispatcher("addActividad.jsp").forward(request, response);
                     break;
+                case "edit":
+                    nombreA = request.getParameter("nombreActividad");
+                    String descA = request.getParameter("desc");
+                    idActividad = Integer.parseInt(request.getParameter("idActividad"));
+                    String finalizada_A = request.getParameter("finalizada");
+                    if(finalizada_A.equals("0")){
+                        finalizada_A = "No finalizada";
+                    }else {
+                        finalizada_A = "Finalizada";
+                    }
+                    
+                    request.setAttribute("nombreActividad", nombreA);                    
+                    request.setAttribute("idActividad", idActividad);
+                    request.setAttribute("desc", descA);                    
+                    request.setAttribute("finalizada", finalizada_A);
+
+                    
+                    request.getRequestDispatcher("editActividad.jsp").forward(request, response);
+                    break;
                 case "Agregar":
 
                     int id_listado = 1; // Integer.parseInt(request.getParameter("txtlistado"));
+
                     String nombre = request.getParameter("txtnombre");
                     String descripcion = request.getParameter("txtdescripcion");
                     Boolean finalizada = false;
@@ -278,6 +413,23 @@ public class Controlador extends HttpServlet {
                     actividadD.agregarActividades(actividad);
 
                     request.getRequestDispatcher("Controlador?menu=actividades&accion=showLists&idListadoA=" + actividad.getIdListado() + "&nombreListadoA=" + l_actividades.getNombre()).forward(request, response);
+                    break;
+            case "Editar":
+                    
+                     // Integer.parseInt(request.getParameter("txtlistado"));
+                    nombre = request.getParameter("txtnombre");
+                    descripcion = request.getParameter("txtdescripcion");
+                    finalizada = request.getParameter("txtfinalizada").equals("1");
+                    
+                    actividad.setIdListado(idListadoA);
+                    actividad.setNombre(nombre);
+                    actividad.setDescripcion(descripcion);
+                    actividad.setFinalizada(finalizada);
+                    actividad.setIdActividad(idActividad);
+                               
+                    actividadD.editarActividades(actividad);
+                    
+                    request.getRequestDispatcher("Controlador?menu=actividades&accion=showLists&idListadoA=" + actividad.getIdListado()+"&nombreListadoA=" + l_actividades.getNombre()).forward(request, response);
                     break;
                 case "Cancelar":
                     lt.setIdTablero(idBoard);
