@@ -32,7 +32,7 @@
             <div class="col-sm-8" id="botonLista">
                 <div>
                     <a id="botonLista" class="btn btn-outline-success" href="Controlador?menu=Tareas&accion=add">Crear Nueva Tarea
-                        <ion-icon name="add-outline" style="font-size: 30px;"></ion-icon></a>
+                        <ion-icon name="add-outline" style="font-size: 30px;"></ion-icon></a>              
                 </div>
             </div>
         </div>
@@ -44,6 +44,9 @@
                             <th></th>
                             <th>Nombre</th>
                             <th>Descripción</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Fin</th>
+                            <th>Estado</th>                            
                             <th></th>
                         </tr>
                     </thead>
@@ -51,19 +54,25 @@
                         <tr>
                             <td><ion-icon name="clipboard-outline" style="font-size: 35px;"></ion-icon></td>
                             <td>${tarea.getNombre()}</td>
-                            <td>${tarea.getDescripcion()}</td>        
+                            <td>${tarea.getDescripcion()}</td>    
+                            <td>${tarea.getFechaInicio()}</td>
+                            <td>${tarea.getFechaFin()}</td>                               
+                            <td>${tarea.getEstado()}</td>
+
                             <td>
                                      <!--Controlador?menu=Tareas&accion=showTareas&nameListado=$ {ls.getNombreLista()}&idListadoTareas=$ {ls.getIdLista()}"-->
-                                <a href="Controlador?menu=listado_a&accion=showLists&idTarea=${tarea.getIdTarea()}&nombreTarea=${tarea.getNombre()}">
+                                <a href="Controlador?menu=listado_a&accion=showLists&idTarea=${tarea.getIdTarea()}&nombreTarea=${tarea.getNombre()}" alt="Ver Listados de Actividades">
                                     <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
-                         <!--       <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=$ {um.getIdTablero()}">
-                                    <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
-                                    <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=$ {um.getIdTablero()}">
-                                    <ion-icon name="trash" style="font-size: 40px;"></ion-icon></a>-->
-                        </tr>
+                                <a href="Controlador?menu=Tareas&accion=edit&idTarea=${tarea.getIdTarea()}&nombreTarea=${tarea.getNombre()}&desc=${tarea.getDescripcion()}&fechaInicio=${tarea.getFechaInicio()}&fechaFin=${tarea.getFechaFin()}&estado=${tarea.getEstado()}" alt="Editar">
+                                    <ion-icon name="pencil-outline" style="font-size: 40px;"></ion-icon></a>      
+                                
+                                
+                         </tr>
                     </c:forEach>
                 </table>
             </div>
+            
+
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

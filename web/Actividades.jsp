@@ -42,6 +42,7 @@
                             <th></th>
                             <th>Nombre</th>
                             <th>Descripción</th>
+                            <th>Finalizada</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -49,8 +50,12 @@
                         <tr>
                             <td><ion-icon name="clipboard-outline" style="font-size: 35px;"></ion-icon></td>
                             <td>${ls.getNombre()}</td>
-                            <td>${ls.getDescripcion()}</td>        
-                            <td>                          
+                            <td>${ls.getDescripcion()}</td>     
+                            <td>${ls.getFinalizada()}</td>        
+                            <td>
+                                <a href="Controlador?menu=actividades&accion=edit&idActividad=${ls.getIdActividad()}&nombreActividad=${ls.getNombre()}&desc=${ls.getDescripcion()}&finalizada=${ls.getFinalizada()}" alt="Editar">
+                                    <ion-icon name="pencil-outline" style="font-size: 40px;"></ion-icon></a>      
+                                
                                <!-- <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=$ {um.getIdTablero()}">
                                     <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
                                     <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=$ {um.getIdTablero()}">

@@ -25,7 +25,7 @@ public class ListadoActividadesDAO {
     ResultSet rs;
     int u;
     
-     //Listar mis Tableros
+     //Listar mis listados de actividades
     public List listarListadosActividades(int idTarea) {
         String sql = "SELECT * FROM listado_actividades WHERE id_tarea=" + idTarea;
         List<ListadoActividades> ListTable = new ArrayList<>();
@@ -50,7 +50,7 @@ public class ListadoActividadesDAO {
         return ListTable;
     }
 
-    //Agregar Tablero
+    //Agregar Listado actividades
     public int agregarListadoActividades(ListadoActividades la) {
         String sql = "insert into listado_actividades (id_tarea, nombre, "
                 + "descripcion, fecha_hora_creacion, porcentaje_avance)"
@@ -73,8 +73,29 @@ public class ListadoActividadesDAO {
         return u;
     }
     
+        //Editar Listado actividades
+    public int editarListadoActividades(ListadoActividades la) {
+        String sql = "update listado_actividades set id_tarea=?, nombre=?, "
+                + "descripcion=? "
+                + "where id_listado = ?";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, la.getIdTarea());
+            ps.setString(2, la.getNombre());
+            ps.setString(3, la.getDescripcion());
+            ps.setInt(4, la.getIdListado());
+            
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+            System.err.println("Error" + e);
+        }
+        return u;
+    }
     
-     // Eliminar Tarea
+     // Eliminar listado de actividades
     public void eliminarListadoActividades(int idListado) {
         String sql = "DELETE FROM listado_actividades WHERE id_listado=?";
         try {

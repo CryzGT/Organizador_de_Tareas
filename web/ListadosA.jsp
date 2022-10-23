@@ -19,7 +19,7 @@
     </head>
     <body>
         <div class="contenedor">
-            <div class="card col-sm-8" id="hijo">
+            <div class="card col-sm-12" id="hijo">
                 <div  style="display: inline-block">
                     <ion-icon name="clipboard-outline" style="font-size: 64px;"></ion-icon>
                     <h1 style="text-align: center">Listado de Actividades de la Tarea: ${NOMBRETAREA.getNombre()}</h1>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="d-flex">
-            <div class="col-sm-8" id="botonLista">
+            <div class="col-sm-12" id="botonLista">
                 <div>
                     <a id="botonLista" class="btn btn-outline-success" href="Controlador?menu=listado_a&accion=add">Crear Nuevo Listado 
                         <ion-icon name="add-outline" style="font-size: 30px;"></ion-icon></a>     
@@ -42,6 +42,7 @@
                             <th></th>
                             <th>Nombre</th>
                             <th>Descripción</th>
+                            <th>Porcentaje de Avance</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -49,16 +50,54 @@
                         <tr>
                             <td><ion-icon name="clipboard-outline" style="font-size: 35px;"></ion-icon></td>
                             <td>${ls.getNombre()}</td>
-                            <td>${ls.getDescripcion()}</td>        
+                            <td>${ls.getDescripcion()}</td>
+                            <td>${ls.getPorcentajeAvance()}</td>        
                             <td>              
                                 <a href="Controlador?menu=actividades&accion=showLists&idListadoA=${ls.getIdListado()}&nombreListadoA=${ls.getNombre()}">
                                     <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
-                               <!-- <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=$ {um.getIdTablero()}">
+                                <a href="Controlador?menu=listado_a&accion=edit&idListado=${ls.getIdListado()}&nombreListado=${ls.getNombre()}&desc=${ls.getDescripcion()}&finalizada=${ls.getPorcentajeAvance()}" alt="Editar">
+                                    <ion-icon name="pencil-outline" style="font-size: 40px;"></ion-icon></a>      
+                                
+                                <!-- <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=$ {um.getIdTablero()}">
                                     <ion-icon name="chevron-forward-circle" style="font-size: 40px;"></ion-icon></a>
                                     <a href="Controlador2?menu=EditarUsuario&accion=Editar&idU=$ {um.getIdTablero()}">
                                     <ion-icon name="trash" style="font-size: 40px;"></ion-icon></a>-->
                         </tr>
                     </c:forEach>
+                </table>
+            </div>
+            
+            <div class="col-sm-3" id="tableLista">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align: center;">Comentarios de la Tarea
+                            </th>
+                        </tr>
+                    </thead>
+                    <c:forEach  var="com" items="${SHOWCOMENTARIOS}">
+                        <tr>
+                            <td><ion-icon name="chatbox-ellipses-outline"></ion-icon></td>
+                            <td>${com.getDetalle()}</td>
+                         </tr>
+                    </c:forEach>
+                         
+                        <tr>
+                            <td colspan="2">
+                                <form action="Controlador?menu=Tareas&idTarea=${idTarea}" method="POST">
+                                    <div class="form-group">
+                                        <label>Nuevo comentario</label>
+                                        <input class="form-control" type="text" name="txtcomentario" placeholder="Ingrese nuevo comentario">
+                                    </div>  
+                                    <input type="submit" name="accion" value="addComentario"  class="btn btn-info">
+                                </form>
+                                
+                            </td>
+                            <!--<td>
+                                <a id="botonLista" class="btn" href="Controlador?menu=Tareas&accion=addComentario&idTarea=${idTarea}">
+                            <ion-icon name="add-outline" style="font-size: 30px;"></ion-icon></a>
+                            </td> -->
+                        </tr>
                 </table>
             </div>
         </div>

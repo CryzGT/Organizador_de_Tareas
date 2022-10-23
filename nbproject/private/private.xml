@@ -3,19 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/Modelo/Listas.java</file>
             <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/Controlador/Controlador.java</file>
             <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/web/Listas.jsp</file>
-            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/Controlador/Controlador2.java</file>
-            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/Modelo/ListadoActividadesDAO.java</file>
-            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/Modelo/ActividadDAO.java</file>
-            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/web/Actividades.jsp</file>
-            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/web/miTablero.jsp</file>
-            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/web/addListadosA.jsp</file>
-            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/Modelo/Listas.java</file>
-            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/web/ListadosA.jsp</file>
-            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/web/Tarea.jsp</file>
-            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/web/addActividad.jsp</file>
-            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/web/addTarea.jsp</file>
+            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/Modelo/TareaDAO.java</file>
+            <file>file:/C:/Users/spaniagua/Desktop/UMG/Semestre%208/Análisis2/Proyecto%20Final/Organizador_de_Tareas/src/java/config/Conexion.java</file>
         </group>
     </open-files>
 </project-private>
